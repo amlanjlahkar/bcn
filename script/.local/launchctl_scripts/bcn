@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# This script Checks if my mac is currently charging and sends a
+# notification if battery level has reached or exceeded 80%.
+# Battery-Charge-Notifier or 'bcn' in short.
+
+IFS='=' read -r _ is_charging < <(ioreg -rc AppleSmartBattery | rg -F '"IsCharging"')
+
+[[ "${is_charging:1}" = 'No' ]] && exit
+
+IFS='=' read -r _ current_capacity < <(ioreg -rc AppleSmartBattery | rg -F '"CurrentCapacity"')
+
+if [[ "${current_capacity:1}" -ge 80 ]]; then
+        osascript -e 'display notification "Battery is at 80%. Unplug the charger to preserve battery health" with title "Battery Charged"'
+fi
+
+# vim:ft=bash:
