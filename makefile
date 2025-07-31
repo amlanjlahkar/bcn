@@ -31,4 +31,5 @@ else
 endif
 
 clean: bootout
+	-rm -f ${SCRIPTDIR}/bcn
 	@stow --verbose --delete --target=${TARGETDIR} ${AGENTDIR}
