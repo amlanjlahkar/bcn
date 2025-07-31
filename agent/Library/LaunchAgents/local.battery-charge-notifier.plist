@@ -5,7 +5,7 @@
         <key>Label</key>
         <string>local.battery-charge-notifier</string>
         <key>Program</key>
-        <string>/Users/amlan/.local/launchctl_scripts/bcn</string>
+        <string>/Users/amlan/.local/launchd_scripts/bcn</string>
         <key>StartInterval</key>
         <integer>900</integer>
     </dict>
