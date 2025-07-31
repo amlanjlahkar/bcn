@@ -1,0 +1,21 @@
+Simple launchd agent that periodically checks for current battery level
+and sends a notification if it has reached or exceeded 80% to avoid any
+possible degradation in battery health.
+
+Usage:
+======
+The makefile uses gnu stow to symlink the job definition file to the appropriate
+location for the current user(~/Library/LaunchAgents). To link and bootstrap
+the service for the target domain simply run: make.
+
+To edit the run interval for the script override the "INTERVAL" variable
+and run: make update-interval. Currently it is set to 900(secs i.e. after
+every 15minutes).
+
+Note:
+=====
+You may specify the path where the script is intended to be located by
+overriding the "SCRIPTDIR" variable in the makefile and it will create
+a symlink to the specified location. You also need to update the job
+definition file(the "Program" key) so that it points to the configured path.
+
